@@ -1,0 +1,14 @@
+geotweetstream/credentials.py
+geotweetstream/logs/*
+geotweetstream/corpus/*
+geotweetstream/testing/*
+geoinsta/*
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+*.pyc

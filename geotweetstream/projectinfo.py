@@ -1,0 +1,2 @@
+projectName = "labsynthe"
+coordsName = "timessquare"
