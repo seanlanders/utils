@@ -44,9 +44,9 @@ def showTweets(tweets):
 		except:
 			pass
 
-def showText(tweet):
+def getValue(tweet, key):
 	json_load = json.loads(tweet)
-	text = json_load['text']
+	text = json_load[key]
 	return text
 
 if __name__ == "__main__":
@@ -55,17 +55,21 @@ if __name__ == "__main__":
 
 	print(len(tweets))
 	print(tweets[0])
-	corpus = ""
+	corpus = []
 	corpusError = 0
 	for tweet in tweets:
 		try:
-			corpus += showText(tweet)
+			tweetText = p.clean(getValue(tweet, "text"))
+			tweetID = getValue(tweet, "id")
+			corpus.append([tweetID, tweetText])
 		except:
 			corpusError +=1
+	json.dump(corpus, open("out.json","w"))
+	"""
 	with open(tweetCorpus, "w") as f:
-		f.write(corpus)
+		f.write(writeCorpus)
 		#for i in range(len(corpus)):
 		#	lineWrite = corpus[i] + "\r\r"
 		#	f.write(lineWrite)
-		f.close()
-	print("Written to",tweetCorpus,"., # Tweets:",len(tweets),",Errors:",corpusError)
+		f.close()"""
+	print("Written to",tweetCorpus,"., # Tweets:",len(corpus),",Errors:",corpusError)
