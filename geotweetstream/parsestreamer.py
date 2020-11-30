@@ -55,13 +55,14 @@ if __name__ == "__main__":
 
 	print(len(tweets))
 	print(tweets[0])
-	corpus = []
+	corpus = {}
 	corpusError = 0
 	for tweet in tweets:
 		try:
 			tweetText = p.clean(getValue(tweet, "text"))
 			tweetID = getValue(tweet, "id")
-			corpus.append([tweetID, tweetText])
+			corpus[tweetID] = tweetText 
+			#corpus.append(writeText)
 		except:
 			corpusError +=1
 	json.dump(corpus, open("out.json","w"))
@@ -73,3 +74,10 @@ if __name__ == "__main__":
 		#	f.write(lineWrite)
 		f.close()"""
 	print("Written to",tweetCorpus,"., # Tweets:",len(corpus),",Errors:",corpusError)
+
+	dictToJson = json.dumps(corpus)
+	print(type(dictToJson))
+	print(dictToJson)
+
+
+	print(tweets[0])
